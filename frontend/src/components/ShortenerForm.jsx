@@ -13,6 +13,11 @@ export default function ShortenerForm() {
         setError(null);
         setResult(null);
 
+        let finalUrl = url;
+        if (finalUrl && !finalUrl.startsWith("http://") && !finalUrl.startsWith("https://")) {
+            finalUrl = "https://" + finalUrl;
+        }
+
         try {
             Log("frontend", "info", "component", "sending create short url request");
 
@@ -22,7 +27,7 @@ export default function ShortenerForm() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    url: url,
+                    url: finalUrl,
                     ...(validity ? { validity: parseInt(validity) } : {}),
                     ...(shortcode ? { shortcode } : {})
                 })

@@ -1,0 +1,11 @@
+**/.env
+**/node_modules/
+
+**/.vscode/
+
+**/build/
+**/dist/
+
+**/.cache/
+**/*.log
+**/logs/
